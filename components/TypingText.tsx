@@ -4,22 +4,22 @@ import { useEffect, useState } from 'react'
 
 interface TypingTextProps {
   text: string
-  speed?: number
+  speed?: number // Speed in ms per character, default 100
 }
 
-export default function TypingText({ text, speed = 150 }: TypingTextProps) {
+export default function TypingText({ text, speed = 100 }: TypingTextProps) {
   const [displayedText, setDisplayedText] = useState('')
+  const [index, setIndex] = useState(0)
 
   useEffect(() => {
-    let i = 0
-    const interval = setInterval(() => {
-      setDisplayedText(text.slice(0, i + 1))
-      i++
-      if (i === text.length) clearInterval(interval)
-    }, speed)
-
-    return () => clearInterval(interval)
-  }, [text, speed])
+    if (index < text.length) {
+      const timeout = setTimeout(() => {
+        setDisplayedText((prev) => prev + text[index])
+        setIndex(index + 1)
+      }, speed)
+      return () => clearTimeout(timeout)
+    }
+  }, [index, text, speed])
 
   return <span>{displayedText}</span>
 }
