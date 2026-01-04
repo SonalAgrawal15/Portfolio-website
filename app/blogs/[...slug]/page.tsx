@@ -4,8 +4,9 @@ import { allBlogs } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 import Link from '@/components/Link'
 
-export default async function Page({ params }: { params: { slug: string } }) {
-  const post = allBlogs.find((p) => p.slug === params.slug)
+export default async function Page({ params }: { params: Promise < { slug: string } >}) {
+  const {slug} = await params;
+    const post = allBlogs.find((p) => p.slug === slug)
 
   if (!post) notFound()
 
