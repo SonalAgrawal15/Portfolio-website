@@ -10,10 +10,10 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 module.exports = () => {
   const plugins = [withContentlayer, withBundleAnalyzer]
   return plugins.reduce((acc, next) => next(acc), {
-    output: 'export', // Forces static export
-    basePath: '/Portfolio-website',     // Change this to '/your-repo-name' if not using a custom domain
+    output: 'export',               // Required for GitHub Pages
+    basePath: '/Portfolio-website', // Required because your repo is not 'username.github.io'
     reactStrictMode: true,
-    trailingSlash: true,
+    trailingSlash: true,            // Helps with folder structure on static hosts
     pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
     eslint: {
       dirs: ['app', 'components', 'layouts', 'scripts'],
@@ -25,10 +25,9 @@ module.exports = () => {
           hostname: 'picsum.photos',
         },
       ],
-      unoptimized: true, // Required for static export
+      unoptimized: true, // GitHub Pages cannot optimize images on the fly
     },
-    // NOTE: Headers are not supported in static exports on GitHub Pages.
-    // They are commented out below to prevent build errors.
+    // The "headers" function MUST be removed or commented out for 'output: export'
     /*
     async headers() {
       return [
