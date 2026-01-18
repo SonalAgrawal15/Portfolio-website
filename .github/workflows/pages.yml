@@ -3,7 +3,8 @@ name: GitHub Pages
 
 on:
   push:
-    branches: main
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -38,7 +39,8 @@ jobs:
         env:
           EXPORT: 1
           UNOPTIMIZED: 1
-          BASE_PATH: ${{ steps.configurepages.outputs.base_path }}
+      - name: Add .nojekyll file
+        run: touch ./out/.nojekyll
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
@@ -52,4 +54,4 @@ jobs:
     needs: build
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v4 
