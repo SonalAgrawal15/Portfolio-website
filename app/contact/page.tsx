@@ -12,37 +12,37 @@ type SocialKind = 'mail' | 'linkedin' | 'instagram' | 'github'
 export default function Contact() {
   const googleFormLink = 'https://docs.google.com/forms/d/your-id-here/viewform'
 
-const socialLinks: {
-  kind: SocialKind
-  href: string | undefined
-  label: string
-  subtext: string
-}[] = [
-  {
-    kind: 'mail',
-    href: `mailto:${siteMetadata.email}`,
-    label: 'Email',
-    subtext: 'Send a direct message',
-  },
-  {
-    kind: 'linkedin',
-    href: siteMetadata.linkedin,
-    label: 'LinkedIn',
-    subtext: 'Connect on my professional network',
-  },
-  {
-    kind: 'instagram',
-    href: siteMetadata.instagram,
-    label: 'Instagram',
-    subtext: 'Follow for personal updates & stories',
-  },
-  {
-    kind: 'github',
-    href: siteMetadata.github,
-    label: 'Github',
-    subtext: 'Check out my side projects',
-  },
-]
+  const socialLinks: {
+    kind: SocialKind
+    href: string | undefined
+    label: string
+    subtext: string
+  }[] = [
+    {
+      kind: 'mail',
+      href: `mailto:${siteMetadata.email}`,
+      label: 'Email',
+      subtext: 'Send a direct message',
+    },
+    {
+      kind: 'linkedin',
+      href: siteMetadata.linkedin,
+      label: 'LinkedIn',
+      subtext: 'Connect on my professional network',
+    },
+    {
+      kind: 'instagram',
+      href: siteMetadata.instagram,
+      label: 'Instagram',
+      subtext: 'Follow for personal updates & stories',
+    },
+    {
+      kind: 'github',
+      href: siteMetadata.github,
+      label: 'Github',
+      subtext: 'Check out my side projects',
+    },
+  ]
   return (
     <div className="divide-y divide-gray-200 dark:divide-gray-700">
       <div className="space-y-2 pt-6 pb-8 md:space-y-5">
