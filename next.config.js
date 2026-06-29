@@ -12,7 +12,7 @@ module.exports = () => {
   return plugins.reduce((acc, next) => next(acc), {
     output: 'export',
     basePath: '/Portfolio-website',
-    assetPrefix: '/Portfolio-website/',  // Add this line
+    assetPrefix: '/Portfolio-website/', // Add this line
     reactStrictMode: true,
     trailingSlash: true,
     pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],

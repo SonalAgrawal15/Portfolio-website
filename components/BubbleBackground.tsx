@@ -31,8 +31,8 @@ export default function BubbleBackground() {
 
     // Initialize bubbles
     const numBubbles = 50
-    const minSpeed = 0.5; // Ensure they never stop
-    
+    const minSpeed = 0.5 // Ensure they never stop
+
     bubblesRef.current = Array.from({ length: numBubbles }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
@@ -108,7 +108,7 @@ export default function BubbleBackground() {
       ref={canvasRef}
       // Changed z-index to -10 to ensure it's behind everything
       // Added absolute/fixed positioning and inset-0
-      className="fixed inset-0 pointer-events-none -z-10"
+      className="pointer-events-none fixed inset-0 -z-10"
       style={{ background: 'transparent' }}
     />
   )
