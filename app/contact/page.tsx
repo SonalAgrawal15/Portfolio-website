@@ -7,37 +7,42 @@ export const metadata: Metadata = {
   title: 'Contact',
   description: 'Get in touch for collaborations or inquiries.',
 }
+type SocialKind = 'mail' | 'linkedin' | 'instagram' | 'github'
 
 export default function Contact() {
   const googleFormLink = 'https://docs.google.com/forms/d/your-id-here/viewform'
 
-  const socialLinks = [
-    {
-      kind: 'mail',
-      href: `mailto:${siteMetadata.email}`,
-      label: 'Email',
-      subtext: 'Send a direct message',
-    },
-    {
-      kind: 'linkedin',
-      href: siteMetadata.linkedin,
-      label: 'LinkedIn',
-      subtext: 'Connect on my professional network',
-    },
-    {
-      kind: 'instagram',
-      href: siteMetadata.instagram,
-      label: 'Instagram',
-      subtext: 'Follow for personal updates & stories',
-    },
-    {
-      kind: 'github',
-      href: siteMetadata.github,
-      label: 'Github',
-      subtext: 'Check out my side projects',
-    },
-  ]
-
+const socialLinks: {
+  kind: SocialKind
+  href: string | undefined
+  label: string
+  subtext: string
+}[] = [
+  {
+    kind: 'mail',
+    href: `mailto:${siteMetadata.email}`,
+    label: 'Email',
+    subtext: 'Send a direct message',
+  },
+  {
+    kind: 'linkedin',
+    href: siteMetadata.linkedin,
+    label: 'LinkedIn',
+    subtext: 'Connect on my professional network',
+  },
+  {
+    kind: 'instagram',
+    href: siteMetadata.instagram,
+    label: 'Instagram',
+    subtext: 'Follow for personal updates & stories',
+  },
+  {
+    kind: 'github',
+    href: siteMetadata.github,
+    label: 'Github',
+    subtext: 'Check out my side projects',
+  },
+]
   return (
     <div className="divide-y divide-gray-200 dark:divide-gray-700">
       <div className="space-y-2 pt-6 pb-8 md:space-y-5">
@@ -68,7 +73,7 @@ export default function Contact() {
                 >
                   <div className="mr-5 transition-transform duration-300 group-hover:scale-110">
                     {/* Pass null or # to SocialIcon's href if it forces an internal <a> tag to avoid nesting <a> inside <a> */}
-                    <SocialIcon kind={social.kind as any} href={social.href} size={8} />
+                    <SocialIcon kind={social.kind} href={social.href} size={8} />
                   </div>
                   <div className="flex flex-col">
                     <span className="text-lg font-bold text-gray-900 dark:text-gray-100">
